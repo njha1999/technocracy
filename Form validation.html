@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation</title>
+	<style type="text/css">
+	body{margin-left:50px;}
+		#i{
+	border:2px solid #456879;
+	border-radius:15px;
+	height: 40px;
+	width: 170px;}
+	#i:hover {
+    transition: all 0.5s;
+	transform: scale(1.05);
+	background-color: #0A7E8C;
+	}
+	#id{size:20;
+		height:28px;
+		width:53%;
+		border-radius: 10px;
+	}
+	#id:focus {
+    transition: all 0.5s;
+	transform: scale(1.05);
+	background-color: #c4ffcb;
+	}
+	#id:hover {
+    transition: all 0.5s;
+	transform: scale(1.05);
+	background-color: #29AB87;
+	}
+	select{width: 1000%;
+	    padding: 16px 20px;
+	    border: none;
+	    border-radius: 4px;
+	    background-color: #f1f1f1;
+	}
+	input[type=name]{background-color: #ABCABC;
+			text-align: center; border: 2px solid #58427C;
+	    color:crimson;font-size: 20px;}
+	input[type=password]{background-color: #ABCABC;
+			text-align: center; border: 2px solid #58427C;
+	    color:crimson;font-size: 20px;}
+	textarea {
+
+	    background-color: #f8f8f8;
+	font-size: 20px;} 
+	input[placeholder=Your Name]{color: black;}
+	input[value]{font-size: 25px;}
+	</style>
+
+	<script type="text/javascript">
+	function validateform()
+	{
+		var name = document.forms["myform"]["name"].value;
+		var age=document.forms["myform"]["age"].value;
+		var con = document.forms["myform"]["contact"].value;
+		var email = document.forms["myform"]["mail"].value;
+		var p1 = document.forms["myform"]["pwd1"].value;
+		var p2 = document.forms["myform"]["pwd2"].value;
+		var pass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.{8,})");
+		var letters = /^[A-Za-z]+$/;
+		var ema = /.+\@.+\..+/;
+	      if(!name.match(letters))
+	      {
+	      alert('Please input alphabet characters only');
+	      return false;
+	      }
+	      if(age<20||isNaN(age))
+		  {
+				alert("Invalid Age");
+				return false;
+		  }
+		  if(con.length!=10||isNaN(con))
+		  {
+				alert("Invalid Contact Number");
+				return false;
+		  }
+		  if(!email.match(ema))
+			{
+				alert("Please enter a valid email address!!");
+				return false;
+			}
+		  if(p1!=p2)
+		  {
+		  	alert("Passwords Don't match!");
+		  	return false;
+		  }
+		  else
+		  {
+		  	if(!p1.match(pass))
+		  	{
+		  		alert("Password must have atleast one uppercase and lowercase character,with minimum length 8!!");
+		  		return false;
+		  	}
+		  	else
+		  	{
+		  		alert("Accepted!!");
+		  		return true;
+		  	}
+		  }
+	}
+	</script>
+</head>
+<body style="background-color: black;">
+	<center><div style="height: 870px;width: 500px;background-color: white;text-align: center;border-radius: 20px;margin-top: 50px;margin-bottom: 50px; ">
+<h1 style="font-size:35px;text-align: center;"><u><i>Register</i></u></h1>
+<p style="font-size:23px;text-align: center;">Join our community !!</p>
+<form name="myform" method="post" action="#" >
+<input type="name" id="id" name="name" placeholder="Name" title="Name can't be empty" /><br><br>
+<input type="name" id="id" name="age" placeholder="Age" title="Age must be integer" /><br><br>
+<input type="radio" name="gender"><span style="font-size: 22px">&nbsp&nbspMale</span>&nbsp&nbsp&nbsp&nbsp<input type="radio" name="gender"><span style="font-size: 22px">&nbsp&nbspFemale</span><br><br>
+<br><br>
+<input type="name" id="id" name="contact" placeholder="Contact Number" title="It must be of 10 digits"/><br><br>
+<input type="name" id="id" name="mail"  placeholder="E-mail address" title="email must be valid" /><br><br>
+<input id="id" placeholder="Password" type="password" name="pwd1"><br><br>
+<input id="id" placeholder="Confirm" type="password" name="pwd2"><br><br>
+<input id="i" type="reset" value="Register Now" title="Click to Register or Press Enter" onclick="return validateform();"/>
+</form>
+</div></center>
+</body>
+</html>
